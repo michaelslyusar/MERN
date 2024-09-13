@@ -5,11 +5,14 @@
   "main": "serve.js",
   "scripts": {
     "start": "node server",
-    "server":"nodemon server"
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.7",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.12",
     "express": "^4.19.2",
