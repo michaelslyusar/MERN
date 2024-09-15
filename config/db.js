@@ -1,19 +1,15 @@
-const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI');
+import mongoose from 'mongoose';
+
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(db, {
-      useNewUrlParser: true
-    });
-
-    console.log('mongoDB Connected...');
+    const conn = await mongoose.connect(process.env.mongoURI);
+    console.log(`mongoDB Connected: ${conn.connection.host}`);
   } catch (err) {
-    console.log(err.message);
+    console.log(`Error:333 ${err.message}`);
     // Exit proccess with failure
     process.exit(1);
   }
 };
 
-module.exports = connectDB;
+export default connectDB;
